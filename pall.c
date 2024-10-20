@@ -7,8 +7,9 @@
 void _pall(stack_t **stack, unsigned int l_count)
 {
 	(void)l_count;
-	stack_t *current = *stack;
+	stack_t *current;
 
+	*current = *stack;
 	while (current != NULL)
 	{
 		printf("%d\n", current->n);
