@@ -40,7 +40,7 @@ int main(int argc, char *argv[])
 			exit(EXIT_FAILURE);
 		}
 	
-		instruction->f(&stack, line_number, file);
+		instruction->f(&stack, line_number);
 		line_number++;
 	}
 
