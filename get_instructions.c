@@ -1,9 +1,14 @@
 #include "monty.h"
 
 /**
- *
+ * get_instruction - fetches the coresponding function
+ * @line: line content
+ * @stack: head of the stack
+ * @count: line count
+ * @file: monty file
+ * Return: 0 on success
  */
-int get_instruction(char *line, stack_t *stack, unsigned int counter, FILE *file)
+int get_instruction(char *line, stack_t *stack, unsigned int count, FILE *file)
 {
 	instruction_t instructions[] = {
 		{"push", _push},
@@ -16,12 +21,15 @@ int get_instruction(char *line, stack_t *stack, unsigned int counter, FILE *file
 	char *opcode = strtok(line, " \n");
 
 	if (opcode == NULL)
-		return (0);
+		return (1);
 
 	for (i = 0; i < sizeof(instructions) / sizeof(instructions[0]); i++)
 	{
 		if (strcmp(instructions[i].opcode, opcode) == 0)
+		{
 			instructions[i].f(stack, counter);
+			return (0);
+		}
 	}
 
 	if (opcode && instructions[i].opcode == NULL)
