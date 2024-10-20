@@ -3,7 +3,7 @@
 /**
  *
  */
-int get_instruction(char *line, stack_t *stack, unsigned int counter, FILE *file)
+int get_instruction(char *line, stack_t *stack, unsigned int counter)
 {
 	instruction_t instructions[] = {
 		{"push", _push},
