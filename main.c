@@ -9,10 +9,10 @@
 
 int main(int argc, char *argv[])
 {
+	char *line;
 	FILE *file;
 	stack_t *stack = NULL;
-	unsigned int line_number = 1;
-	char *line;
+	ssize_t line_number = 1;
 	instruction_t *instruction;
 
 	if (argc != 2)
@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
 
 	while ((line = getline(&line, &line_number, file)) != NULL)
 	{
-		instruction = get_instruct(line, line_number);
+		instruction = get_instruct(line, stack, line_number, file);
 		if (instruction == NULL)
 		{
 			fprintf(stderr, "L%d: unknown instruction\n",
