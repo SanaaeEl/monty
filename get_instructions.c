@@ -3,7 +3,7 @@
 /**
  *
  */
-int get_instruction(char *line, stack_t *stack, unsigned int counter)
+int get_instruction(char *line, stack_t *stack, unsigned int counter, FILE *file)
 {
 	instruction_t instructions[] = {
 		{"push", _push},
@@ -12,7 +12,7 @@ int get_instruction(char *line, stack_t *stack, unsigned int counter)
 		*/
 		{NULL, NULL}
 	};
-	unsigned int i;
+	unsigned int i = 0;
 	char *opcode = strtok(line, " \n");
 
 	if (opcode == NULL)
@@ -24,5 +24,15 @@ int get_instruction(char *line, stack_t *stack, unsigned int counter)
 			instructions[i].f(stack, counter);
 	}
 
-	fprintf(stderr, "L%d: unknown instruction\n", counter);
+	if (opcode && instructions[i].opcode == NULL)
+	{
+		fprintf(stderr, "L%d: unknown instruction %s\n", counter,
+				opcode);
+		fclose(file);
+		free(line);
+		free_stack(*stack);
+		exit(EXIT_FAILURE);
+	}
+	return (1);
+
 }
