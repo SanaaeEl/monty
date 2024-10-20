@@ -7,10 +7,12 @@ int get_instruction(char *line, stack_t *stack, unsigned int counter, FILE *file
 {
 	instruction_t instructions[] = {
 		{"push", _push},
-		{"pall", _pall},
+		/**
+		* {"pall", _pall},
+		*/
 		{NULL, NULL}
 	};
-	int i;
+	unsigned int i;
 	char *opcode = strtok(line, " \n");
 
 	if (opcode == NULL)
