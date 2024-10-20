@@ -40,7 +40,7 @@ typedef struct instruction_s
 
 
 void _push(stack_t **head, unsigned int l_count);
-int get_instruct(char *line, stack_t *stack, unsigned int count, FILE *file);
+int get_instruct(char *line, stack_t **stack, unsigned int count, FILE *file);
 void free_stack(stack_t *stack);
 
 

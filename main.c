@@ -29,9 +29,9 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	while ((line = getline(&line, &len, file)) != NULL)
+	while ((line = getline(&line, &line_number, file)) != NULL)
 	{
-		instruction = get_instruction(line);
+		instruction = get_instruct(line, line_number);
 		if (instruction == NULL)
 		{
 			fprintf(stderr, "L%d: unknown instruction\n",
