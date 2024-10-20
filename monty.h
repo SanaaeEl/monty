@@ -5,6 +5,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/types.h>
+#include <unistd.h>
+
 
 
 /**
@@ -40,8 +43,10 @@ typedef struct instruction_s
 
 
 void _push(stack_t **head, unsigned int l_count);
+void _pall(stack_t **stack);
 int get_instruct(char *line, stack_t **stack, unsigned int count, FILE *file);
 void free_stack(stack_t *stack);
+ssize_t read_line(char **lineptr, size_t *n, FILE *stream);
 
 
 

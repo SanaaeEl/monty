@@ -12,9 +12,7 @@ int get_instruct(char *line, stack_t **stack, unsigned int count, FILE *file)
 {
 	instruction_t instructions[] = {
 		{"push", _push},
-		/**
-		* {"pall", _pall},
-		*/
+		{"pall", _pall},
 		{NULL, NULL}
 	};
 	unsigned int i = 0;
@@ -43,4 +41,47 @@ int get_instruct(char *line, stack_t **stack, unsigned int count, FILE *file)
 	}
 	return (1);
 
+}
+
+/**
+ * read_line - behaves similarly to getline()
+ * @lineptr: buffer where the read line will be stored
+ * @n: size of buffer
+ * @stream: file to read
+ * Return: number of characters read
+ */
+ssize_t read_line(char **lineptr, size_t *n, FILE *stream)
+{
+	char *buffer;
+	size_t len = 0;
+	int c;
+
+	if (*lineptr == NULL || *n == 0)
+	{
+		*n = 128;
+		*lineptr = malloc(*n);
+		if (*lineptr == NULL)
+			return (-1);
+	}
+
+	buffer = *lineptr;
+
+	while ((c = fgetc(stream)) != EOF && c != '\n')
+	{
+		if (len + 1 >= *n)
+		{
+			*n *= 2;
+			buffer = realloc(buffer, *n);
+			if (buffer == NULL)
+				return (-1);
+			*lineptr = buffer;
+		}
+		buffer[len++] = (char)c;
+	}
+
+	if (len == 0 && c == EOF)
+		return (-1);
+
+	buffer[len] = '\0';
+	return ((ssize_t)len);
 }

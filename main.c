@@ -9,11 +9,12 @@
 
 int main(int argc, char *argv[])
 {
-	char *line;
+	char *line = NULL;
 	FILE *file;
 	stack_t *stack = NULL;
-	ssize_t line_number = 1;
-	instruction_t *instruction;
+	ssize_t read;
+	unsigned int line_number = 1;
+	size_t len = 0;
 
 	if (argc != 2)
 	{
@@ -29,22 +30,14 @@ int main(int argc, char *argv[])
 		exit(EXIT_FAILURE);
 	}
 
-	while ((line = getline(&line, &line_number, file)) != NULL)
+	while ((read = read_line(&line, &len, file)) != -1)
 	{
-		instruction = get_instruct(line, stack, line_number, file);
-		if (instruction == NULL)
-		{
-			fprintf(stderr, "L%d: unknown instruction\n",
-					line_number);
-			fclose(file);
-			exit(EXIT_FAILURE);
-		}
-	
-		instruction->f(&stack, line_number);
+		get_instruct(line, &stack, line_number, file);
 		line_number++;
 	}
 
 	fclose(file);
+	free(line);
 	free_stack(stack);
 	return (EXIT_SUCCESS);
 }
