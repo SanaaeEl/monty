@@ -6,10 +6,11 @@
  */
 void _pall(stack_t **stack, unsigned int l_count)
 {
-	(void)l_count;
 	stack_t *current;
+	(void)l_count;
 
-	*current = *stack;
+	current = *stack;
+
 	while (current != NULL)
 	{
 		printf("%d\n", current->n);
