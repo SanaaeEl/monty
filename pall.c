@@ -4,8 +4,9 @@
  * _pall - prints all the elements on the stack, starting from the top
  * @stack: head of the stack
  */
-void _pall(stack_t **stack)
+void _pall(stack_t **stack, unsigned int l_count)
 {
+	(void)l_count;
 	stack_t *current = *stack;
 
 	while (current != NULL)
