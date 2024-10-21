@@ -13,6 +13,7 @@ int get_instruct(char *line, stack_t **stack, unsigned int count, FILE *file)
 	instruction_t instructions[] = {
 		{"push", _push},
 		{"pall", _pall},
+		{"pint", _pint},
 		{NULL, NULL}
 	};
 	unsigned int i = 0;
