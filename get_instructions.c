@@ -15,6 +15,7 @@ int get_instruct(char *line, stack_t **stack, unsigned int count, FILE *file)
 		{"pall", _pall},
 		{"pint", _pint},
 		{"pop", _pop},
+		{"swap", _swap},
 		{NULL, NULL}
 	};
 	unsigned int i = 0;
