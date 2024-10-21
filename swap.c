@@ -8,7 +8,7 @@
 
 void _swap(stack_t **head, unsigned int l_count)
 {
-	stack_t **temp;
+	stack_t *temp;
 	int nm, count = 0;
 
 	temp = *head;
