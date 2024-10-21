@@ -2,10 +2,10 @@
 
 /**
  * _nop : doesn't do anything.
- * @stack: head of the stack
+ * @head: head of the stack
  * @l_count: lines' count
  */
-void _nop(stack_t **stack, unsigned int l_count)
+void _nop(stack_t **head, unsigned int l_count)
 {
 	(void)head;
 	(void)l_count;
