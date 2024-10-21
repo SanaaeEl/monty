@@ -34,12 +34,12 @@ void _push(stack_t **head, unsigned int l_count)
 	}
 
 	new->n = (int)value;
-	new->next = *stack;
+	new->next = *head;
 	new->prev = NULL;
 
-	if (*stack != NULL)
-		(*stack)->prev = new;
+	if (*head != NULL)
+		(*head)->prev = new;
 
-	*stack = new;
+	*head = new;
 
 }
