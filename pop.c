@@ -7,8 +7,8 @@
  */
 void _pop(stack_t **head, unsigned int l_count)
 {
-	(void)l_count;
 	stack_t *temp;
+	(void)l_count;
 
 	if (*head == NULL)
 	{
