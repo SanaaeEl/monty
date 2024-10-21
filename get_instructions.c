@@ -21,7 +21,7 @@ int get_instruct(char *line, stack_t **stack, unsigned int count, FILE *file)
 	if (opcode == NULL)
 		return (1);
 
-	for (i = 0; i < sizeof(instructions) / sizeof(instructions[0]); i++)
+	for (i = 0; instructions[i].opcode != NULL; i++)
 	{
 		if (strcmp(instructions[i].opcode, opcode) == 0)
 		{
@@ -30,15 +30,10 @@ int get_instruct(char *line, stack_t **stack, unsigned int count, FILE *file)
 		}
 	}
 
-	if (opcode && instructions[i].opcode == NULL)
-	{
-		fprintf(stderr, "L%d: unknown instruction %s\n", count,
-				opcode);
-		fclose(file);
-		free(line);
-		free_stack(*stack);
-		exit(EXIT_FAILURE);
-	}
+	fprintf(stderr, "L%d: unknown instruction %s\n", count, opcode);
+	fclose(file);
+	free_stack(*stack);
+	exit(EXIT_FAILURE);
 	return (1);
 
 }
