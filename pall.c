@@ -3,6 +3,7 @@
 /**
  * _pall - prints all the elements on the stack, starting from the top
  * @stack: head of the stack
+ * @l_count: lines' count
  */
 void _pall(stack_t **stack, unsigned int l_count)
 {
