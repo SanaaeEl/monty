@@ -47,6 +47,7 @@ void _pall(stack_t **stack, unsigned int l_count);
 void _pint(stack_t **head, unsigned int l_count);
 void _pop(stack_t **head, unsigned int l_count);
 void _swap(stack_t **head, unsigned int l_count);
+void _add(stack_t **head, unsigned int l_count);
 
 int get_instruct(char *line, stack_t **stack, unsigned int count, FILE *file);
 void free_stack(stack_t *stack);
